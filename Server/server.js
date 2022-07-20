@@ -12,7 +12,7 @@ const server = http.createServer((req, res) => {
         console.log("id")
         getTodo(req, res, id)
     }
-    else if (req.url = "/todos" && req.method == "POST") {
+    else if (req.url = "/todos" && req.method === "POST") {
         createTodo(req, res)
     }
     else if(req.url.match(/\/todos\/([0-9]+)/) && req.method=="PUT"){

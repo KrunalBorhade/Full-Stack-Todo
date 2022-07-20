@@ -4,9 +4,15 @@ const { getPostData } = require("../utils")
 
 async function getTodos(req, res) {
     try {
+        const headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
+            'Access-Control-Max-Age': 2592000, // 30 days
+            /** add other headers as per requirement */
+          };
         const todos = await Todos.findAll()
 
-        res.writeHead(200, { "Content-Type": "application/json" })
+        res.writeHead(200,headers, { "Content-Type": "application/json" })
         res.end(JSON.stringify(todos))
     } catch (err) {
         console.error(err)
